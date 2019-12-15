@@ -1,7 +1,10 @@
-#ifndef INCLUDE_INCLUDE
-#include "../../include.h"
-#endif
-#define INCLUDE_STROP
+#include <stdlib.h>
+#include <bsd/string.h>
+
+typedef struct {
+	int len;
+	char *str;
+} string;
 
 string *str_create(void);
 void str_del(string *str);
