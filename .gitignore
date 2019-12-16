@@ -1,0 +1,4 @@
+libmds.so
+*/objects/*
+tests/hello
+tests/jumble
