@@ -1,5 +1,12 @@
+#ifndef INCLUDE_STDLIB
 #include <stdlib.h>
-#include <bsd/string.h>
+#define INCLUDE_STDLIB
+#endif
+#ifndef INCLUDE_STRING
+#include <string.h>
+#define INCLUDE_STRING
+#endif
+#define INCLUDE_STROP
 
 typedef struct {
 	int len;
