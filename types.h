@@ -5,6 +5,10 @@ typedef struct {
 	char *str;
 } string;
 
+#ifdef CUSTOM_GT
+#else 
+#define generic_t _generic_t
+#endif
 typedef union {
 	char char_t;
 	int int_t;
@@ -16,7 +20,7 @@ typedef union {
 	char *cstring_t;
 	string *string_t;
 	struct llist *llist_t;
-} generic_t;
+} _generic_t;
 
 struct llist {
 	struct llist_node *first;
