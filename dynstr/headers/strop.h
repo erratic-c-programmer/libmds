@@ -1,3 +1,6 @@
+#ifndef INCLUDE_TYPES
+#include "../../types.h"
+#endif
 #ifndef INCLUDE_STDLIB
 #include <stdlib.h>
 #define INCLUDE_STDLIB
@@ -7,11 +10,6 @@
 #define INCLUDE_STRING
 #endif
 #define INCLUDE_STROP
-
-typedef struct {
-	int len;
-	char *str;
-} string;
 
 string *str_create(void);
 void str_del(string *str);

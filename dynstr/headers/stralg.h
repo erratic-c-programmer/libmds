@@ -1,3 +1,6 @@
+#ifndef INCLUDE_TYPES
+#include "../../types.h"
+#endif
 #ifndef INCLUDE_STROP
 #include "strop.h"
 #endif
