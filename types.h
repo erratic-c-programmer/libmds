@@ -1,11 +1,5 @@
 #define INCLUDE_TYPES
 
-struct llist {
-	struct llist_node *first;
-	struct llist_node *last;
-	int len;
-};
-
 typedef struct {
 	int len;
 	char *str;
@@ -24,11 +18,16 @@ typedef union {
 	struct llist *llist_t;
 } generic_t;
 
+struct llist {
+	struct llist_node *first;
+	struct llist_node *last;
+	int len;
+};
+
 struct llist_node {
 	generic_t data;
 	struct llist_node *prev;
 	struct llist_node *next;
-	int size;
 	struct llist *abs_parent;
 };
 

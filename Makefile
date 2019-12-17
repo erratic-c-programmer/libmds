@@ -31,7 +31,7 @@ tests/llist : tests/llist.c
 	$(CC) $(CFLAGS) -L. -lmds $<
 
 clean : FORCE
-	rm -f */objects/*
+	rm -f */objects/*.o
 	rm -f tests/hello
 	rm -f tests/jumble
 
