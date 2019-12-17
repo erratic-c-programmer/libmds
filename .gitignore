@@ -2,3 +2,4 @@ libmds.so
 */objects/*.o
 tests/hello
 tests/jumble
+tests/llist
