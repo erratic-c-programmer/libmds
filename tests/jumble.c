@@ -14,5 +14,7 @@ int main(void)
 	str_append(mystr, buf, nread - 1);
 	string *jstring = str_shuf(mystr);
 	printf("%s\n%s\n", mystr->str, jstring->str);
+	str_del(mystr);
+	str_del(jstring);
 	return 0;
 }
