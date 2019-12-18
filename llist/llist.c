@@ -11,9 +11,10 @@ struct llist *llist_create(void)
 
 void llist_del(struct llist *in)
 {
+	assert(in != NULL);
 	struct llist_node *t = in->last;
 
-	while (t->next != NULL) {
+	while (t->prev != NULL) {
 		t = t->prev;
 		free(t->next);
 	}

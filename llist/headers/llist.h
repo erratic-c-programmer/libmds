@@ -4,6 +4,10 @@
 #ifndef INCLUDE_STDLIB
 #include <stdlib.h>
 #endif
+#ifndef INCLUDE_ASSERT
+#include <assert.h>
+#define INCLUDE_ASSERT
+#endif
 #define INCLUDE_LLIST
 
 struct llist *llist_create(void);
