@@ -3,3 +3,4 @@ libmds.so
 tests/hello
 tests/jumble
 tests/llist
+tests/llist_huge
