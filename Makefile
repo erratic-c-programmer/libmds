@@ -16,9 +16,12 @@ dynstr/objects/stralg.o : dynstr/stralg.c
 llist/objects/llist.o : llist/llist.c
 	$(OCC) $(CFLAGS) $^
 
+llist/objects/llalg.o : llist/llalg.c
+	$(OCC) $(CFLAGS) $^
+
 ###############################################################################
 
-test : tests/hello tests/jumble tests/llist all
+test : tests/hello tests/jumble tests/llist tests/llist_huge all
 	@echo 'Run this:  export LD_LIBRARY_PATH=$$(pwd)'
 
 tests/hello : tests/hello.c
@@ -30,9 +33,14 @@ tests/jumble : tests/jumble.c
 tests/llist : tests/llist.c
 	$(CC) $(CFLAGS) -L. -lmds $<
 
+tests/llist_huge : tests/llist_huge.c
+	$(CC) $(CFLAGS) -L. -lmds $<
+
 clean : FORCE
 	rm -f */objects/*.o
 	rm -f tests/hello
 	rm -f tests/jumble
+	rm -f tests/llist
+	rm -f tests/llist_huge
 
 FORCE :
