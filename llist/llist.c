@@ -1,10 +1,11 @@
 #include "headers/llist.h"
 
-struct llist *llist_create(void)
+struct llist *llist_create(size_t datasize)
 {
 	struct llist *retval = malloc(sizeof(struct llist));
 	retval->first = NULL;
 	retval->last = NULL;
+	retval->datasize = datasize;
 	retval->len = 0;
 	return retval;
 }
@@ -23,7 +24,7 @@ void llist_del(struct llist *in)
 	free(in);
 }
 
-void llist_addnode(struct llist *in, generic_t data, int pos)
+void llist_addnode(struct llist *in, void *data, int pos)
 {
 	/* WARNING! Contains hazardous amounts of pointer wrangling! */
 	struct llist_node *new_node = malloc(sizeof(struct llist_node));
@@ -72,7 +73,7 @@ void llist_rmnode(struct llist *in, int pos)
 
 void llist_swap(struct llist *in, int first, int second)
 {
-	generic_t t;
+	void *t;
 	t = llist_getval(in, first);
 	llist_getelem(in, first)->data = llist_getelem(in, second)->data;
 	llist_getelem(in, second)->data = t;
@@ -86,7 +87,7 @@ struct llist_node *llist_getelem(struct llist *in, int node_no)
 	return t;
 }
 
-generic_t llist_getval(struct llist *in, int node_no)
+void *llist_getval(struct llist *in, int node_no)
 {
 	return llist_getelem(in, node_no)->data;
 }
