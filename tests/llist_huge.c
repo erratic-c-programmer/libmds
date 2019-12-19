@@ -1,10 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#define CUSTOM_GT /* Must come before inclusion of types.h! */
-typedef union {
-	int int_t;
-} generic_t;
 #include "../types.h"
 #include "../llist/headers/llist.h"
 

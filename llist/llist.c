@@ -29,7 +29,8 @@ void llist_addnode(struct llist *in, generic_t data, int pos)
 	struct llist_node *new_node = malloc(sizeof(struct llist_node));
 	new_node->data = data;
 	new_node->next = NULL;
-	new_node->prev = NULL; new_node->abs_parent = NULL;
+	new_node->prev = NULL;
+	new_node->abs_parent = NULL;
 
 	if (pos == 0) { /* In this case new_node->prev always points to NULL */
 		if (in->len == 0) {
@@ -58,6 +59,15 @@ void llist_addnode(struct llist *in, generic_t data, int pos)
 
 	new_node->abs_parent = in;
 	(in->len)++;
+}
+
+void llist_rmnode(struct llist *in, int pos)
+{
+	struct llist_node *t = llist_getelem(in, pos);
+	t->prev->next = t->next;
+	t->next->prev = t->prev;
+	free(t);
+	(in->len)--;
 }
 
 void llist_swap(struct llist *in, int first, int second)

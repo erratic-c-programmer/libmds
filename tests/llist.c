@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "../types.h"
 #include "../llist/headers/llist.h"
 
 int main(void)
@@ -14,7 +15,9 @@ int main(void)
 	llist_addnode(new, TO_GT 8, 7);
 	llist_addnode(new, TO_GT 9, 8);
 	llist_addnode(new, TO_GT 10, 9);
+	llist_addnode(new, TO_GT 11, 9);
 	llist_swap(new, 8, 9);
+	llist_rmnode(new, 4);
 	for (int i = 0; i < new->len; i++)
 		printf("%d\n", llist_getval(new, i).int_t);
 
