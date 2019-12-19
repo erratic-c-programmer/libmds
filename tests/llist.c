@@ -4,22 +4,22 @@
 
 int main(void)
 {
-	struct llist *new = llist_create();
-	llist_addnode(new, TO_GT 1, 0);
-	llist_addnode(new, TO_GT 2, 1);
-	llist_addnode(new, TO_GT 3, 2);
-	llist_addnode(new, TO_GT 4, 3);
-	llist_addnode(new, TO_GT 5, 0);
-	llist_addnode(new, TO_GT 6, 3);
-	llist_addnode(new, TO_GT 7, 6);
-	llist_addnode(new, TO_GT 8, 7);
-	llist_addnode(new, TO_GT 9, 8);
-	llist_addnode(new, TO_GT 10, 9);
-	llist_addnode(new, TO_GT 11, 9);
+	struct llist *new = llist_create(sizeof(int));
+	llist_addnode(new, &(int){1}, 0);
+	llist_addnode(new, &(int){2}, 1);
+	llist_addnode(new, &(int){3}, 2);
+	llist_addnode(new, &(int){4}, 3);
+	llist_addnode(new, &(int){5}, 0);
+	llist_addnode(new, &(int){6}, 3);
+	llist_addnode(new, &(int){7}, 6);
+	llist_addnode(new, &(int){8}, 7);
+	llist_addnode(new, &(int){9}, 8);
+	llist_addnode(new, &(int){10}, 9);
+	llist_addnode(new, &(int){11}, 9);
 	llist_swap(new, 8, 9);
 	llist_rmnode(new, 4);
 	for (int i = 0; i < new->len; i++)
-		printf("%d\n", llist_getval(new, i).int_t);
+		printf("%d\n", *(int*)llist_getval(new, i));
 
 	printf("Memory used: %d bytes | Constant size %d + %d nodes of size %d each\n", \
 			new->len * sizeof(struct llist_node) + sizeof(struct llist), \

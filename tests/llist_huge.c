@@ -7,14 +7,14 @@
 
 int main(void)
 {
-	struct llist *new = llist_create();
+	struct llist *new = llist_create(sizeof(int));
 
 	for(int i = 0; i < 1000000; i++)
-		llist_addnode(new, TO_GT i, i);
+		llist_addnode(new, &(int){i}, i);
 
 	/*
 	for (int i = 0; i < new->len; i++)
-		printf("%d\n", llist_getval(new, i).int_t);
+		printf("%d\n", *(int*)llist_getval(new, i));
 	*/
 
 	printf("Memory used: %d bytes | Constant size %d + %d nodes of size %d each\n", \
