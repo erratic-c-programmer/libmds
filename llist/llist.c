@@ -28,7 +28,8 @@ void llist_addnode(struct llist *in, void *data, int pos)
 {
 	/* WARNING! Contains hazardous amounts of pointer wrangling! */
 	struct llist_node *new_node = malloc(sizeof(struct llist_node));
-	new_node->data = data;
+	new_node->data = calloc(1, in->datasize);
+	memcpy(new_node->data, data, in->datasize);
 	new_node->next = NULL;
 	new_node->prev = NULL;
 	new_node->abs_parent = NULL;
