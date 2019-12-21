@@ -18,8 +18,10 @@ void llist_del(struct llist *in)
 	while (t->prev != NULL) {
 		t = t->prev;
 		free(t->next);
+		free(t->next->data);
 	}
 
+	free(in->first->data);
 	free(in->first);
 	free(in);
 }
@@ -32,7 +34,7 @@ void llist_addnode(struct llist *in, void *data, int pos)
 	memcpy(new_node->data, data, in->datasize);
 	new_node->next = NULL;
 	new_node->prev = NULL;
-	new_node->abs_parent = NULL;
+	new_node->root = NULL;
 
 	if (pos == 0) { /* In this case new_node->prev always points to NULL */
 		if (in->len == 0) {
@@ -59,7 +61,7 @@ void llist_addnode(struct llist *in, void *data, int pos)
 		t->prev = new_node;
 	}
 
-	new_node->abs_parent = in;
+	new_node->root = in;
 	(in->len)++;
 }
 
