@@ -1,4 +1,5 @@
 libmds.so
+libmds.a
 */objects/*.o
 tests/hello
 tests/jumble

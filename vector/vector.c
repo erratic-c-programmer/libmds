@@ -15,6 +15,9 @@ struct vector *vector_create(size_t datasize)
 
 void vector_del(struct vector *in)
 {
+	for (int i = 0; i < in->cap; i++) {
+		free(in->data[i]);
+	}
 	free(in->data);
 	free(in);
 }
