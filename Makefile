@@ -48,7 +48,7 @@ tests/llist_huge : tests/llist_huge.c
 	$(CC) $(CFLAGS) -L. -lmds $<
 
 tests/vector : tests/vector.c
-	$(CC) $(CFLAGS) -L. -lefence -lmds $<
+	$(CC) $(CFLAGS) -L. -lmds $<
 
 clean : FORCE
 	rm -f */objects/*.o
