@@ -5,3 +5,4 @@ tests/jumble
 tests/llist
 tests/llist_huge
 tests/vector
+vgcore*
