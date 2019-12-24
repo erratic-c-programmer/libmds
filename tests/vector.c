@@ -10,6 +10,8 @@ int main(void)
 	vector_pushback(new, &(int){3});
 	vector_pushback(new, &(int){4});
 	vector_pushback(new, &(int){5});
+	vector_pushfront(new, &(int){6});
+	vector_shrinkfit(new);
 	for (int i = 0; i < new->len; i++) {
 		printf("%d\n", *(int*)new->data[i]);
 	}

@@ -32,7 +32,7 @@ vector/objects/vector.o : vector/vector.c
 
 ###############################################################################
 
-test : libmds.so tests/hello tests/jumble tests/llist tests/llist_huge tests/vector
+test : libmds.so tests/hello tests/jumble tests/llist tests/llist_huge tests/vector tests/vector_huge
 	@echo 'Run this:  export LD_LIBRARY_PATH=$$(pwd)'
 
 tests/hello : tests/hello.c
@@ -48,6 +48,9 @@ tests/llist_huge : tests/llist_huge.c
 	$(CC) $(CFLAGS) -L. -lmds $<
 
 tests/vector : tests/vector.c
+	$(CC) $(CFLAGS) -L. -lmds $<
+
+tests/vector_huge : tests/vector_huge.c
 	$(CC) $(CFLAGS) -L. -lmds $<
 
 clean : FORCE
