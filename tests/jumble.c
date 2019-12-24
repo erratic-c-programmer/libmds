@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include "../dynstr/headers/strop.h"
-#include "../dynstr/headers/stralg.h"
+#include "../types.h"
+#include "../libmds.h"
 
 char *buf;
 size_t buflen;

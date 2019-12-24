@@ -17,8 +17,8 @@ void llist_del(struct llist *in)
 
 	while (t->prev != NULL) {
 		t = t->prev;
-		free(t->next);
 		free(t->next->data);
+		free(t->next);
 	}
 
 	free(in->first->data);
@@ -70,6 +70,7 @@ void llist_rmnode(struct llist *in, int pos)
 	struct llist_node *t = llist_getelem(in, pos);
 	t->prev->next = t->next;
 	t->next->prev = t->prev;
+	free(t->data);
 	free(t);
 	(in->len)--;
 }

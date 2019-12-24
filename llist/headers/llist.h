@@ -3,6 +3,11 @@
 #endif
 #ifndef INCLUDE_STDLIB
 #include <stdlib.h>
+#define INCLUDE_STDLIB
+#endif
+#ifndef INCLUDE_STRING
+#include <string.h>
+#define INCLUDE_STRING
 #endif
 #ifndef INCLUDE_ASSERT
 #include <assert.h>

@@ -5,9 +5,16 @@
 #define INCLUDE_TYPES
 
 typedef struct {
-	int len;
 	char *str;
+	int len;
 } string;
+
+struct vector {
+	void **data;
+	size_t datasize;
+	size_t len;
+	size_t cap;
+};
 
 struct llist {
 	struct llist_node *first;
@@ -20,5 +27,5 @@ struct llist_node {
 	void *data;
 	struct llist_node *prev;
 	struct llist_node *next;
-	struct llist *abs_parent;
+	struct llist *root;
 };

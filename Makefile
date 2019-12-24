@@ -1,10 +1,18 @@
+AR=ar
 CC=gcc
 OCC=$(CC) -c
 CFLAGS=-Wall -Wpointer-arith -fPIC -g -o $@
 
-all : libmds.so
+all : static dynamic test
 
-libmds.so : dynstr/objects/strop.o dynstr/objects/stralg.o llist/objects/llist.o
+static : libmds.a
+
+dynamic : libmds.so
+
+libmds.a : dynstr/objects/strop.o dynstr/objects/stralg.o llist/objects/llist.o vector/objects/vector.o
+	$(AR) rcs $@ $^
+
+libmds.so : dynstr/objects/strop.o dynstr/objects/stralg.o llist/objects/llist.o vector/objects/vector.o
 	$(CC) $(CFLAGS) -shared $^
 
 dynstr/objects/strop.o : dynstr/strop.c
@@ -19,9 +27,12 @@ llist/objects/llist.o : llist/llist.c
 llist/objects/llalg.o : llist/llalg.c
 	$(OCC) $(CFLAGS) $^
 
+vector/objects/vector.o : vector/vector.c
+	$(OCC) $(CFLAGS) $^
+
 ###############################################################################
 
-test : tests/hello tests/jumble tests/llist tests/llist_huge all
+test : libmds.so tests/hello tests/jumble tests/llist tests/llist_huge tests/vector
 	@echo 'Run this:  export LD_LIBRARY_PATH=$$(pwd)'
 
 tests/hello : tests/hello.c
@@ -36,11 +47,11 @@ tests/llist : tests/llist.c
 tests/llist_huge : tests/llist_huge.c
 	$(CC) $(CFLAGS) -L. -lmds $<
 
+tests/vector : tests/vector.c
+	$(CC) $(CFLAGS) -L. -lefence -lmds $<
+
 clean : FORCE
 	rm -f */objects/*.o
-	rm -f tests/hello
-	rm -f tests/jumble
-	rm -f tests/llist
-	rm -f tests/llist_huge
+	(cd tests/; rm -f `grep --colour=never -r -I -L .`)
 
 FORCE :

@@ -1,8 +1,6 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
 #include "../types.h"
-#include "../llist/headers/llist.h"
+#include "../libmds.h"
 
 
 int main(void)
@@ -17,9 +15,9 @@ int main(void)
 		printf("%d\n", *(int*)llist_getval(new, i));
 	*/
 
-	printf("Memory used: %lu bytes | Constant size %lu + %d nodes of size %lu each\n", \
-			new->len * sizeof(struct llist_node) + sizeof(struct llist), \
-			sizeof(struct llist), new->len, sizeof(struct llist_node));
+	printf("Memory used: %lu bytes | Constant size %lu + %d nodes of size %lu + %lu each\n", \
+			new->len * (sizeof(struct llist_node) + sizeof(int)) + sizeof(struct llist), \
+			sizeof(struct llist), new->len, sizeof(struct llist_node), sizeof(int));
 
 	llist_del(new);
 }

@@ -1,5 +1,6 @@
 #include <stdio.h>
-#include "../dynstr/headers/strop.h"
+#include "../types.h"
+#include "../libmds.h"
 
 int main(void)
 {
