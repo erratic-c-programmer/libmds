@@ -19,17 +19,17 @@ int main(void)
 
 void modll(struct llist *new)
 {
-	llist_addnode(new, &(int){1}, 0);
-	llist_addnode(new, &(int){2}, 1);
-	llist_addnode(new, &(int){3}, 2);
-	llist_addnode(new, &(int){4}, 3);
-	llist_addnode(new, &(int){5}, 0);
-	llist_addnode(new, &(int){6}, 3);
-	llist_addnode(new, &(int){7}, 6);
-	llist_addnode(new, &(int){8}, 7);
-	llist_addnode(new, &(int){9}, 8);
-	llist_addnode(new, &(int){10}, 9);
-	llist_addnode(new, &(int){11}, 9);
+	llist_pushfront(new, &(int){1});
+	llist_pushback(new, &(int){2});
+	llist_pushback(new, &(int){3});
+	llist_pushback(new, &(int){4});
+	llist_pushback(new, &(int){5});
+	llist_pushback(new, &(int){6});
+	llist_pushback(new, &(int){7});
+	llist_pushback(new, &(int){9});
+	llist_pushback(new, &(int){10});
+	llist_pushback(new, &(int){11});
+	llist_emplace(new, &(int){8}, llist_getnode(new, 7));
 	llist_swap(new, 8, 9);
-	llist_rmnode(new, 4);
+	llist_erase(new, llist_getnode(new, 4));
 }
