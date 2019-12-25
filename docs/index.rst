@@ -41,6 +41,11 @@ vector.h
 ~~~~~~~~
 .. doxygenfile:: vector.h
 
+Methods for `list`
+------------------
+llist.h
+~~~~~~~
+.. doxygenfile:: llist.h
 
 Indices and tables
 ==================
