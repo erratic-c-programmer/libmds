@@ -43,7 +43,12 @@ string *str_create(void);
 void str_del(string *str);
 
 /*!
- * @brief Append
+ * @brief Append a char array to a dynamic string
+ *
+ * @param str Pointer to a dynamic string to append to
+ * @param s C string of length @p bufsz to be appended to @p str
+ * @param bufsz Size of @p s
+ */
 void str_append(string *str, const char *s, size_t bufsz);
 void str_trunc(string *str, size_t nsz);
 void str_flush(string *str);
