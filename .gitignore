@@ -7,3 +7,6 @@ src/tests/llist
 src/tests/llist_huge
 src/tests/vector
 src/vgcore*
+docs/_*/
+docs/html/
+docs/xml/
