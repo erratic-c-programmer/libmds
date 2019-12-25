@@ -74,3 +74,7 @@ void vector_pushfront(struct vector *in, void *data)
 	memcpy(in->data[0], data, in->datasize);
 	in->len++;
 }
+
+void vector_insert(struct vector *in, void *data, int pos)
+{
+}

@@ -16,3 +16,5 @@
 struct vector *vector_create(size_t datasize);
 void vector_del(struct vector *in);
 void vector_pushback(struct vector *in, void *data);
+void vector_pushfront(struct vector *in, void *data);
+void vector_shrinkfit(struct vector *in);
