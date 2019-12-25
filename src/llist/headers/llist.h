@@ -18,7 +18,9 @@
 struct llist *llist_create(size_t datasize);
 void *llist_getval(struct llist *in, int node_no);
 void llist_del(struct llist *in);
-void llist_addnode(struct llist *in, void *data, int pos);
-void llist_rmnode(struct llist *in, int pos);
+void llist_pushback(struct llist *in, void *data);
+void llist_pushfront(struct llist *in, void *data);
+void llist_emplace(struct llist *in, void *data, struct llist_node *pos);
+void llist_erase(struct llist *in, struct llist_node *pos);
 void llist_swap(struct llist *in, int first, int second);
-struct llist_node *llist_getelem(struct llist *in, int node_no);
+struct llist_node *llist_getnode(struct llist *in, int node_no);
