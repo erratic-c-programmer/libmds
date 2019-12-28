@@ -11,6 +11,9 @@ int main(void)
 	vector_pushback(new, &(int){4});
 	vector_pushback(new, &(int){5});
 	vector_pushfront(new, &(int){6});
+	vector_insert(new, &(int){7}, 3);
+	vector_insert(new, &(int){8}, 0);
+	vector_insert(new, &(int){9}, 8);
 	vector_shrinkfit(new);
 	for (int i = 0; i < new->len; i++) {
 		printf("%d\n", *(int*)new->data[i]);

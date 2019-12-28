@@ -18,3 +18,4 @@ void vector_del(struct vector *in);
 void vector_pushback(struct vector *in, void *data);
 void vector_pushfront(struct vector *in, void *data);
 void vector_shrinkfit(struct vector *in);
+void vector_insert(struct vector *in, void *data, int pos);
