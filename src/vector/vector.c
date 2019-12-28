@@ -58,6 +58,15 @@ void vector_pushfront(struct vector *in, void *data)
 	in->len++;
 }
 
+void vector_insert(struct vector *in, void *data, int pos)
+{
+	__vec_realloc_asneeded(in);
+	for (int i = in->len; i > pos; i--)
+		memcpy(in->data[i], in->data[i - 1], in->datasize);
+	memcpy(in->data[pos], data, in->datasize);
+	in->len++;
+}
+
 void vector_shrinkfit(struct vector *in)
 {
 	if (!in->cap)
@@ -69,13 +78,4 @@ void vector_shrinkfit(struct vector *in)
 	}
 	void **t = realloc(in->data, in->len * sizeof(void*));
 	in->data = t;
-}
-
-void vector_insert(struct vector *in, void *data, int pos)
-{
-	__vec_realloc_asneeded(in);
-	for (int i = in->len; i > pos; i--)
-		memcpy(in->data[i], in->data[i - 1], in->datasize);
-	memcpy(in->data[pos], data, in->datasize);
-	in->len++;
 }
