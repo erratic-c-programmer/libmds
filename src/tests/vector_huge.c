@@ -8,6 +8,9 @@ int main(void)
 	for (int i = 0; i < 1000000; i++) {
 		vector_pushback(new, &(int){i});
 	}
+	printf("Memory used: %lu bytes | Constant size %lu + %lu elements of size (%lu + %lu) each\n", \
+			sizeof(struct vector) + new->len * new->datasize + new->len * sizeof(void*), \
+			sizeof(struct vector), new->len, new->datasize, sizeof(void*));
 	vector_del(new);
 	return 0;
 }

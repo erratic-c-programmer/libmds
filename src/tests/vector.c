@@ -15,9 +15,11 @@ int main(void)
 	vector_insert(new, &(int){8}, 0);
 	vector_insert(new, &(int){9}, 8);
 	vector_shrinkfit(new);
-	for (int i = 0; i < new->len; i++) {
+	for (int i = 0; i < new->len; i++)
 		printf("%d\n", *(int*)new->data[i]);
-	}
+	printf("Memory used: %lu bytes | Constant size %lu + %lu elements of size (%lu + %lu) each\n", \
+			sizeof(struct vector) + new->len * new->datasize + new->len * sizeof(void*), \
+			sizeof(struct vector), new->len, new->datasize, sizeof(void*));
 	vector_del(new);
 	return 0;
 }

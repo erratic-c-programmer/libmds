@@ -10,12 +10,7 @@ int main(void)
 	for(int i = 0; i < 1000000; i++)
 		llist_pushback(new, &(int){i});
 
-	/*
-	for (int i = 0; i < new->len; i++)
-		printf("%d\n", *(int*)llist_getval(new, i));
-	*/
-
-	printf("Memory used: %lu bytes | Constant size %lu + %d nodes of size %lu + %lu each\n", \
+	printf("Memory used: %lu bytes | Constant size %lu + %d nodes of size (%lu + %lu) each\n", \
 			new->len * (sizeof(struct llist_node) + sizeof(int)) + sizeof(struct llist), \
 			sizeof(struct llist), new->len, sizeof(struct llist_node), sizeof(int));
 
