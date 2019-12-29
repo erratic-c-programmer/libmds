@@ -41,14 +41,6 @@ void vector_pushback(struct vector *in, void *data)
 	in->len++;
 }
 
-void vector_popback(struct vector *in)
-{
-	if (!in->len)
-		return;
-
-	in->len--;
-}
-
 void vector_pushfront(struct vector *in, void *data)
 {
 	__vec_realloc_asneeded(in);
@@ -58,24 +50,26 @@ void vector_pushfront(struct vector *in, void *data)
 	in->len++;
 }
 
-void vector_popfront(struct vector *in)
+void vector_insert(struct vector *in, void *data, int pos)
+{
+	__vec_realloc_asneeded(in);
+
+	for (int i = in->len; i > pos; i--)
+		memcpy(in->data[i], in->data[i - 1], in->datasize);
+
+	memcpy(in->data[pos], data, in->datasize);
+	in->len++;
+}
+
+void vector_erase(struct vector *in, int pos)
 {
 	if (!in->len)
 		return;
 	
-	for (int i = 0; i < in->len; i++)
+	for (int i = pos; i < in->len; i++)
 		memcpy(in->data[i], in->data[i + 1], in->datasize);
 
 	in->len--;
-}
-
-void vector_insert(struct vector *in, void *data, int pos)
-{
-	__vec_realloc_asneeded(in);
-	for (int i = in->len; i > pos; i--)
-		memcpy(in->data[i], in->data[i - 1], in->datasize);
-	memcpy(in->data[pos], data, in->datasize);
-	in->len++;
 }
 
 void vector_shrinkfit(struct vector *in)
