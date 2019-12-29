@@ -58,6 +58,17 @@ void vector_pushfront(struct vector *in, void *data)
 	in->len++;
 }
 
+void vector_popfront(struct vector *in)
+{
+	if (!in->len)
+		return;
+	
+	for (int i = 0; i < in->len; i++)
+		memcpy(in->data[i], in->data[i + 1], in->datasize);
+
+	in->len--;
+}
+
 void vector_insert(struct vector *in, void *data, int pos)
 {
 	__vec_realloc_asneeded(in);
