@@ -32,7 +32,7 @@ void str_del(string *str)
 void str_trunc(string *str, size_t nsz)
 {
 	assert(str != NULL);
-	str->str[nsz - 1] = '\0'; /*This it a bit hacky, but it works */
+	str->str[nsz] = '\0'; /*This it a bit hacky, but it works */
 	str->len = nsz;
 }
 
