@@ -31,10 +31,6 @@ strop.h
 ~~~~~~~
 .. doxygenfile:: strop.h
 
-stralg.h
-~~~~~~~~
-.. doxygenfile:: stralg.h
-
 Methods for `vector`
 --------------------
 vector.h
