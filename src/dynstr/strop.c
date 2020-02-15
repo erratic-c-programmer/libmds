@@ -16,7 +16,7 @@ string *str_create(void)
 void str_append(string *str, const char *s, size_t bufsz)
 {
 	assert(str != NULL);
-	char *tmp = realloc(str->str, bufsz + str->len);
+	char *tmp = realloc(str->str, bufsz + str->len + 1);
 	str->str = tmp;
 	str->len += bufsz;
 	strcat(str->str, s);
