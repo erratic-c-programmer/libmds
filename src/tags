@@ -1,10 +1,11 @@
 !_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
 !_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
 !_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
 !_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
 !_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
 !_TAG_PROGRAM_URL	https://ctags.io/	/official site/
-!_TAG_PROGRAM_VERSION	0.0.0	/3fdf28bc/
+!_TAG_PROGRAM_VERSION	0.0.0	/a3c87ab5/
 AR	Makefile	/^AR=ar$/;"	m
 CC	Makefile	/^CC=gcc$/;"	m
 CFLAGS	Makefile	/^CFLAGS=-Wall -Wpointer-arith -fPIC -g -o $@$/;"	m
@@ -13,7 +14,6 @@ INCLUDE_ASSERT	dynstr/headers/strop.h	/^#define INCLUDE_ASSERT$/;"	d
 INCLUDE_ASSERT	llist/headers/llist.h	/^#define INCLUDE_ASSERT$/;"	d
 INCLUDE_LLIST	llist/headers/llist.h	/^#define INCLUDE_LLIST$/;"	d
 INCLUDE_STDDEF	types.h	/^#define INCLUDE_STDDEF$/;"	d
-INCLUDE_STDLIB	btree/headers/btree.h	/^#define INCLUDE_STDLIB$/;"	d
 INCLUDE_STDLIB	dynstr/headers/strop.h	/^#define INCLUDE_STDLIB$/;"	d
 INCLUDE_STDLIB	llist/headers/llist.h	/^#define INCLUDE_STDLIB$/;"	d
 INCLUDE_STDLIB	vector/headers/vector.h	/^#define INCLUDE_STDLIB$/;"	d
@@ -31,30 +31,25 @@ __anon078763300108	types.h	/^typedef struct {$/;"	s
 __vec_realloc_asneeded	vector/vector.c	/^void __vec_realloc_asneeded(struct vector *in)$/;"	f	typeref:typename:void
 __vector_assert	vector/headers/vector.h	/^#define __vector_assert(/;"	d
 all	Makefile	/^all : static dynamic test$/;"	t
-btree	types.h	/^struct btree {$/;"	s
-btree_create	btree/btree.c	/^struct btree *btree_create$/;"	s	file:
-btree_node	types.h	/^struct btree_node {$/;"	s
-buf	tests/jumble.c	/^char *buf;$/;"	v	typeref:typename:char *
-buflen	tests/jumble.c	/^size_t buflen;$/;"	v	typeref:typename:size_t
 cap	types.h	/^	size_t cap;$/;"	m	struct:vector	typeref:typename:size_t
 clean	Makefile	/^clean : FORCE$/;"	t
 data	types.h	/^	void **data;$/;"	m	struct:vector	typeref:typename:void **
-data	types.h	/^	void *data;$/;"	m	struct:btree_node	typeref:typename:void *
 data	types.h	/^	void *data;$/;"	m	struct:llist_node	typeref:typename:void *
-datasize	types.h	/^	size_t datasize;$/;"	m	struct:btree	typeref:typename:size_t
 datasize	types.h	/^	size_t datasize;$/;"	m	struct:llist	typeref:typename:size_t
 datasize	types.h	/^	size_t datasize;$/;"	m	struct:vector	typeref:typename:size_t
 dynamic	Makefile	/^dynamic : libmds.so$/;"	t
-first	types.h	/^	struct btree_node first;$/;"	m	struct:btree	typeref:struct:btree_node
+dynstr/objects/stralg.o	Makefile	/^dynstr\/objects\/stralg.o : dynstr\/stralg.c$/;"	t
+dynstr/objects/strop.o	Makefile	/^dynstr\/objects\/strop.o : dynstr\/strop.c$/;"	t
 first	types.h	/^	struct llist_node *first;$/;"	m	struct:llist	typeref:struct:llist_node *
 last	types.h	/^	struct llist_node *last;$/;"	m	struct:llist	typeref:struct:llist_node *
-left	types.h	/^	struct btree_node *left;$/;"	m	struct:btree_node	typeref:struct:btree_node *
 len	types.h	/^	int len;$/;"	m	struct:__anon078763300108	typeref:typename:int
 len	types.h	/^	int len;$/;"	m	struct:llist	typeref:typename:int
 len	types.h	/^	size_t len;$/;"	m	struct:vector	typeref:typename:size_t
-libmds.a	Makefile	/^libmds.a : obj\/strop.o obj\/stralg.o obj\/llist.o obj\/vector.o$/;"	t
-libmds.so	Makefile	/^libmds.so : obj\/strop.o obj\/stralg.o obj\/llist.o obj\/vector.o$/;"	t
+libmds.a	Makefile	/^libmds.a : dynstr\/objects\/strop.o dynstr\/objects\/stralg.o llist\/objects\/llist.o vector\/ob/;"	t
+libmds.so	Makefile	/^libmds.so : dynstr\/objects\/strop.o dynstr\/objects\/stralg.o llist\/objects\/llist.o vector\/o/;"	t
 llist	types.h	/^struct llist {$/;"	s
+llist/objects/llalg.o	Makefile	/^llist\/objects\/llalg.o : llist\/llalg.c$/;"	t
+llist/objects/llist.o	Makefile	/^llist\/objects\/llist.o : llist\/llist.c$/;"	t
 llist_create	llist/llist.c	/^struct llist *llist_create(size_t datasize)$/;"	f	typeref:struct:llist *
 llist_del	llist/llist.c	/^void llist_del(struct llist *in)$/;"	f	typeref:typename:void
 llist_emplace	llist/llist.c	/^void llist_emplace(struct llist *in, void *data, struct llist_node *pos)$/;"	f	typeref:typename:void
@@ -66,25 +61,13 @@ llist_pushback	llist/llist.c	/^void llist_pushback(struct llist *in, void *data)
 llist_pushfront	llist/llist.c	/^void llist_pushfront(struct llist *in, void *data)$/;"	f	typeref:typename:void
 llist_swap	llist/llist.c	/^void llist_swap(struct llist *in, int first, int second)$/;"	f	typeref:typename:void
 main	tests/hello.c	/^int main(void)$/;"	f	typeref:typename:int
-main	tests/jumble.c	/^int main(void)$/;"	f	typeref:typename:int
 main	tests/llist.c	/^int main(void)$/;"	f	typeref:typename:int
 main	tests/llist_huge.c	/^int main(void)$/;"	f	typeref:typename:int
 main	tests/vector.c	/^int main(void)$/;"	f	typeref:typename:int
 main	tests/vector_huge.c	/^int main(void)$/;"	f	typeref:typename:int
 modll	tests/llist.c	/^void modll(struct llist *new)$/;"	f	typeref:typename:void
-new	btree/btree.c	/^	struct btree *new = malloc(1, sizeof(btree));$/;"	m	struct:btree_create	typeref:struct:btree *	file:
 next	types.h	/^	struct llist_node *next;$/;"	m	struct:llist_node	typeref:struct:llist_node *
-nodecnt	types.h	/^	int nodecnt;$/;"	m	struct:btree	typeref:typename:int
-nread	tests/jumble.c	/^int nread;$/;"	v	typeref:typename:int
-obj/llalg.o	Makefile	/^obj\/llalg.o : llist\/llalg.c$/;"	t
-obj/llist.o	Makefile	/^obj\/llist.o : llist\/llist.c$/;"	t
-obj/stralg.o	Makefile	/^obj\/stralg.o : dynstr\/stralg.c$/;"	t
-obj/strop.o	Makefile	/^obj\/strop.o : dynstr\/strop.c$/;"	t
-obj/vector.o	Makefile	/^obj\/vector.o : vector\/vector.c$/;"	t
-parent	types.h	/^	struct btree node *parent;$/;"	m	struct:btree_node	typeref:struct:btree node *
 prev	types.h	/^	struct llist_node *prev;$/;"	m	struct:llist_node	typeref:struct:llist_node *
-right	types.h	/^	struct btree_node *right;$/;"	m	struct:btree_node	typeref:struct:btree_node *
-root	types.h	/^	struct btree *root;$/;"	m	struct:btree_node	typeref:struct:btree *
 root	types.h	/^	struct llist *root;$/;"	m	struct:llist_node	typeref:struct:llist *
 static	Makefile	/^static : libmds.a$/;"	t
 str	types.h	/^	char *str;$/;"	m	struct:__anon078763300108	typeref:typename:char *
@@ -95,15 +78,14 @@ str_flush	dynstr/strop.c	/^void str_flush(string *str)$/;"	f	typeref:typename:vo
 str_shuf	dynstr/stralg.c	/^string *str_shuf(string *str)$/;"	f	typeref:typename:string *
 str_trunc	dynstr/strop.c	/^void str_trunc(string *str, size_t nsz)$/;"	f	typeref:typename:void
 string	types.h	/^} string;$/;"	t	typeref:struct:__anon078763300108
-tags	Makefile	/^tags : FORCE$/;"	t
-test	Makefile	/^test : libmds.so tests\/hello tests\/jumble tests\/llist tests\/llist_huge tests\/vector tests\//;"	t
+test	Makefile	/^test : libmds.so tests\/hello tests\/llist tests\/llist_huge tests\/vector tests\/vector_huge$/;"	t
 tests/hello	Makefile	/^tests\/hello : tests\/hello.c$/;"	t
-tests/jumble	Makefile	/^tests\/jumble : tests\/jumble.c$/;"	t
 tests/llist	Makefile	/^tests\/llist : tests\/llist.c$/;"	t
 tests/llist_huge	Makefile	/^tests\/llist_huge : tests\/llist_huge.c$/;"	t
 tests/vector	Makefile	/^tests\/vector : tests\/vector.c$/;"	t
 tests/vector_huge	Makefile	/^tests\/vector_huge : tests\/vector_huge.c$/;"	t
 vector	types.h	/^struct vector {$/;"	s
+vector/objects/vector.o	Makefile	/^vector\/objects\/vector.o : vector\/vector.c$/;"	t
 vector_create	vector/vector.c	/^struct vector *vector_create(size_t datasize)$/;"	f	typeref:struct:vector *
 vector_del	vector/vector.c	/^void vector_del(struct vector *in)$/;"	f	typeref:typename:void
 vector_erase	vector/vector.c	/^void vector_erase(struct vector *in, int pos)$/;"	f	typeref:typename:void

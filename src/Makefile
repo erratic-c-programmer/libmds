@@ -32,13 +32,10 @@ vector/objects/vector.o : vector/vector.c
 
 ###############################################################################
 
-test : libmds.so tests/hello tests/jumble tests/llist tests/llist_huge tests/vector tests/vector_huge
+test : libmds.so tests/hello tests/llist tests/llist_huge tests/vector tests/vector_huge
 	@echo 'Run this:  export LD_LIBRARY_PATH=$$(pwd)'
 
 tests/hello : tests/hello.c
-	$(CC) $(CFLAGS) -L. -lmds $<
-
-tests/jumble : tests/jumble.c
 	$(CC) $(CFLAGS) -L. -lmds $<
 
 tests/llist : tests/llist.c
