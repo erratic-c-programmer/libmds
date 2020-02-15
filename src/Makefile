@@ -9,16 +9,13 @@ static : libmds.a
 
 dynamic : libmds.so
 
-libmds.a : dynstr/objects/strop.o dynstr/objects/stralg.o llist/objects/llist.o vector/objects/vector.o
+libmds.a : dynstr/objects/strop.o llist/objects/llist.o vector/objects/vector.o
 	$(AR) rcs $@ $^
 
-libmds.so : dynstr/objects/strop.o dynstr/objects/stralg.o llist/objects/llist.o vector/objects/vector.o
+libmds.so : dynstr/objects/strop.o llist/objects/llist.o vector/objects/vector.o
 	$(CC) $(CFLAGS) -shared $^
 
 dynstr/objects/strop.o : dynstr/strop.c
-	$(OCC) $(CFLAGS) $^
-
-dynstr/objects/stralg.o : dynstr/stralg.c
 	$(OCC) $(CFLAGS) $^
 
 llist/objects/llist.o : llist/llist.c

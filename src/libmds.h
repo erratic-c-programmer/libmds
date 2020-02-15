@@ -7,9 +7,6 @@ extern "C" {
 #ifndef INCLUDE_STROP
 #include "dynstr/headers/strop.h"
 #endif
-#ifndef INCLUDE_STRALG
-#include "dynstr/headers/stralg.h"
-#endif
 #ifndef INCLUDE_LLIST
 #include "llist/headers/llist.h"
 #endif
