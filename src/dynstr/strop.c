@@ -9,7 +9,7 @@ string *str_create(void)
 	string *new = malloc(sizeof(string));
 	new->str = malloc(sizeof(char));
 	new->str[0] = '\0';
-	new->len = 1;
+	new->len = 0;
 	return new;
 }
 
