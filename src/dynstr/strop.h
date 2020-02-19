@@ -4,7 +4,7 @@
  */
 
 #ifndef INCLUDE_TYPES
-#include "../../types.h"
+#include "../types.h"
 #endif
 #ifndef INCLUDE_STDLIB
 #include <stdlib.h>

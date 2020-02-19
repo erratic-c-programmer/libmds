@@ -1,5 +1,5 @@
 #ifndef INCLUDE_STROP
-#include "headers/strop.h"
+#include "strop.h"
 #endif
 
 /* TODO: malloc safety checks */

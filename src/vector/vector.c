@@ -1,4 +1,4 @@
-#include "headers/vector.h"
+#include "vector.h"
 
 struct vector *vector_create(size_t datasize)
 {
