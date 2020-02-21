@@ -23,15 +23,11 @@ void vector_shrinkfit(struct vector *in);
 
 /* "Function" macros */
 
-#define __vector_assert(in) \
-	(void) (in)->len; \
-	(void) (in)->cap; \
-	(void) (in)->data;
-
 #define vector_popfront(in) \
-	__vector_assert((in)); \
 	(vector_erase((in), 0))
 
 #define vector_popback(in) \
-	__vector_assert((in)); \
 	(vector_erase((in), (in)->(len - 1)))
+
+#define vector_get(vec, ind, type) \
+	*(type*)((vec)->data[(ind)])

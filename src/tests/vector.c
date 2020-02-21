@@ -19,7 +19,7 @@ int main(void)
 	vector_popfront(new);
 	vector_shrinkfit(new);
 	for (int i = 0; i < new->len; i++)
-		printf("%d\n", *(int*)new->data[i]);
+		printf("%d\n", vector_get(new, i, int));
 	printf("Memory used: %lu bytes | Constant size %lu + %lu elements of size (%lu + %lu) each\n", \
 			sizeof(struct vector) + new->len * new->datasize + new->len * sizeof(void*), \
 			sizeof(struct vector), new->len, new->datasize, sizeof(void*));
