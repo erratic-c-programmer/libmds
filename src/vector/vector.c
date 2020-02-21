@@ -22,7 +22,7 @@ void vector_del(struct vector *in)
 	free(in);
 }
 
-void __vec_realloc_asneeded(struct vector *in)
+static void vec_realloc_asneeded(struct vector *in)
 {
 	if (in->len == in->cap) {
 		void **t = realloc(in->data, (in->cap + PREALLOC) * sizeof(void*));
@@ -34,25 +34,25 @@ void __vec_realloc_asneeded(struct vector *in)
 	}
 }
 
-void vector_pushback(struct vector *in, void *data)
+void __vector_pushback(struct vector *in, void *data)
 {
-	__vec_realloc_asneeded(in);
+	vec_realloc_asneeded(in);
 	memcpy(in->data[in->len], data, in->datasize);
 	in->len++;
 }
 
-void vector_pushfront(struct vector *in, void *data)
+void __vector_pushfront(struct vector *in, void *data)
 {
-	__vec_realloc_asneeded(in);
+	vec_realloc_asneeded(in);
 	for (int i = in->len; i > 0; i--)
 		memcpy(in->data[i], in->data[i - 1], in->datasize);
 	memcpy(in->data[0], data, in->datasize);
 	in->len++;
 }
 
-void vector_insert(struct vector *in, void *data, int pos)
+void __vector_insert(struct vector *in, void *data, int pos)
 {
-	__vec_realloc_asneeded(in);
+	vec_realloc_asneeded(in);
 
 	for (int i = in->len; i > pos; i--)
 		memcpy(in->data[i], in->data[i - 1], in->datasize);
