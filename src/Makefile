@@ -4,7 +4,10 @@ OCC=$(CC) -c
 CFLAGS=-Wall -Wpointer-arith -fPIC -g -o $@
 LD_LIBRARY_PATH = 
 
+.PHONY : all
+
 all : static dynamic test
+	@echo -e "\033[0;31mRun this:  export LD_LIBRARY_PATH=\$${LD_LIBRARY_PATH}:$$(pwd)\033[0m"
 
 static : libmds.a
 
@@ -28,7 +31,6 @@ obj/vector.o : vector/vector.c
 ###############################################################################
 
 test : libmds.so tests/hello tests/llist tests/llist_huge tests/vector tests/vector_huge
-	@echo -e "\033[0;31mRun this:  export LD_LIBRARY_PATH=\$${LD_LIBRARY_PATH}:$$(pwd)\033[0m"
 
 tests/hello : tests/hello.c
 	$(CC) $(CFLAGS) -L. -lmds $<
