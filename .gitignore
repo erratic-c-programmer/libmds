@@ -1,6 +1,6 @@
 src/libmds.so
 src/libmds.a
-src/*/objects/*.o
+src/obj/*
 src/tests/hello
 src/tests/jumble
 src/tests/llist
