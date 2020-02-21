@@ -5,17 +5,11 @@
 int main(void)
 {
 	struct vector *new = vector_create(sizeof(int));
-	vector_pushback(new, &(int){1});
-	vector_pushback(new, &(int){2});
-	vector_pushback(new, &(int){3});
-	vector_pushback(new, &(int){4});
-	vector_pushback(new, &(int){5});
-	vector_pushfront(new, &(int){6});
-	vector_insert(new, &(int){7}, 3);
-	vector_insert(new, &(int){8}, 0);
-	vector_insert(new, &(int){9}, 8);
-	vector_pushfront(new, &(int){10});
-	vector_pushfront(new, &(int){11});
+	vector_pushback(new, 1, int);
+	vector_pushback(new, 2, int);
+	vector_pushback(new, 3, int);
+	vector_pushfront(new, 4, int);
+	vector_insert(new, 5, 1, int);
 	vector_popfront(new);
 	vector_shrinkfit(new);
 	for (int i = 0; i < new->len; i++)
