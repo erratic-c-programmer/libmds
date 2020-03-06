@@ -1,7 +1,7 @@
 AR=ar
 CC=gcc
 OCC=$(CC) -c
-CFLAGS=-Wall -Wpointer-arith -fPIC -g -o $@
+CFLAGS=-Wall -Wpointer-arith -fPIC -g -o $@ -lefence
 LD_LIBRARY_PATH = 
 
 .PHONY : all
@@ -50,5 +50,8 @@ tests/vector_huge : tests/vector_huge.c
 clean : FORCE
 	rm -f obj/*
 	(cd tests/; rm -f `grep --colour=never -r -I -L .`)
+
+cleanproper : clean FORCE
+	rm *.a *.so
 
 FORCE :

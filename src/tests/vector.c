@@ -10,6 +10,8 @@ int main(void)
 	vector_pushback(new, 3, int);
 	vector_pushfront(new, 4, int);
 	vector_insert(new, 5, 1, int);
+	vector_pushback(new, 6, int);
+	vector_erase(new, 3);
 	vector_popfront(new);
 	vector_shrinkfit(new);
 	for (int i = 0; i < new->len; i++)
