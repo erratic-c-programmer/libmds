@@ -52,6 +52,6 @@ clean : FORCE
 	(cd tests/; rm -f `grep --colour=never -r -I -L .`)
 
 cleanproper : clean FORCE
-	rm *.a *.so
+	rm -f *.a *.so
 
 FORCE :
