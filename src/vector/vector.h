@@ -30,7 +30,7 @@ void vector_shrinkfit(struct vector *in);
 	(vector_erase((in), in->len - 1))
 
 #define vector_pushback(vec, data, type) \
-	(__vector_pushback((vec), &(type){data{))
+	(__vector_pushback((vec), &(type){data}))
 
 #define vector_pushfront(vec, data, type) \
 	(__vector_pushfront((vec), &(type){data}))
