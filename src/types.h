@@ -23,11 +23,11 @@ struct vector {
 	/*! Pointers to actual data */
 	void **data;
 	/*! Size of each element in data array */
-	size_t datasize;
+	ssize_t datasize;
 	/*! Current length(=used) */
-	size_t len;
+	ssize_t len;
 	/*! Current size of data array(=used+unused) */
-	size_t cap;
+	ssize_t cap;
 };
 
 /*! @brief Doubly-linked list
@@ -38,7 +38,7 @@ struct llist {
 	/*! Last node of linked list */
 	struct llist_node *last;
 	/*! Size of each element */
-	size_t datasize;
+	ssize_t datasize;
 	/*! Length of linked list */
 	int len;
 };

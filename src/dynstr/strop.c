@@ -13,7 +13,7 @@ string *str_create(void)
 	return new;
 }
 
-void str_append(string *str, const char *s, size_t bufsz)
+void str_append(string *str, const char *s, ssize_t bufsz)
 {
 	assert(str != NULL);
 	char *tmp = realloc(str->str, bufsz + str->len + 1);
@@ -29,7 +29,7 @@ void str_del(string *str)
 	free(str);
 }
 
-void str_trunc(string *str, size_t nsz)
+void str_trunc(string *str, ssize_t nsz)
 {
 	assert(str != NULL);
 	str->str[nsz] = '\0'; /*This it a bit hacky, but it works */

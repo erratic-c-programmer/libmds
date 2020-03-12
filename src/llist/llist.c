@@ -1,7 +1,7 @@
 /* WARNING! Contains hazardous amounts of pointer wrangling! */
 #include "llist.h"
 
-struct llist *llist_create(size_t datasize)
+struct llist *llist_create(sssize_t datasize)
 {
 	struct llist *retval = malloc(sizeof(struct llist));
 	retval->first = NULL;

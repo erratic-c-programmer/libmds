@@ -1,6 +1,6 @@
 #include "vector.h"
 
-struct vector *vector_create(size_t datasize)
+struct vector *vector_create(ssize_t datasize)
 {
 	struct vector *retval = malloc(sizeof(struct vector));
 	retval->data = malloc(PREALLOC * sizeof(void*));

@@ -15,7 +15,7 @@
 #endif
 #define INCLUDE_LLIST
 
-struct llist *llist_create(size_t datasize);
+struct llist *llist_create(sssize_t datasize);
 void *llist_getval(struct llist *in, int node_no);
 void llist_del(struct llist *in);
 void llist_pushback(struct llist *in, void *data);

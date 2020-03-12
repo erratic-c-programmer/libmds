@@ -13,7 +13,7 @@
 
 #define PREALLOC 4
 
-struct vector *vector_create(size_t datasize);
+struct vector *vector_create(ssize_t datasize);
 void vector_del(struct vector *in);
 void __vector_pushback(struct vector *in, void *data);
 void __vector_pushfront(struct vector *in, void *data);

@@ -49,6 +49,6 @@ void str_del(string *str);
  * @param s C string of length @p bufsz to be appended to @p str
  * @param bufsz Size of @p s
  */
-void str_append(string *str, const char *s, size_t bufsz);
-void str_trunc(string *str, size_t nsz);
+void str_append(string *str, const char *s, ssize_t bufsz);
+void str_trunc(string *str, ssize_t nsz);
 void str_flush(string *str);
