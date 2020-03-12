@@ -42,4 +42,4 @@ void vector_shrinkfit(struct vector *in);
 	(*(type*)(vec)->data[ind])
 
 #define vector_getptr(vec, ind, type) \
-	(type*)(vec)->data[ind]
+	((type*)(vec)->data[ind])
