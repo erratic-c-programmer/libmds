@@ -4,6 +4,9 @@
 #endif
 #define INCLUDE_TYPES
 
+/* And since this is about types... */
+#include <sys/types.h>
+
 /*! @brief A dynamic string
  *
  * A dynamically-allocated char array
