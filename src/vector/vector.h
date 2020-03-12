@@ -39,7 +39,7 @@ void vector_shrinkfit(struct vector *in);
 	(__vector_insert((vec), &(type){data}, pos))
 
 #define vector_get(vec, ind, type) \
-	(*((type*)(vec)->data[ind]))
+	(*(type*)(vec)->data[ind])
 
 #define vector_getptr(vec, ind, type) \
-	(type*)((vec)->data[ind])
+	(type*)(vec)->data[ind]
