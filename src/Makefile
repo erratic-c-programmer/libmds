@@ -33,19 +33,19 @@ obj/vector.o : vector/vector.c
 test : libmds.so tests/hello tests/llist tests/llist_huge tests/vector tests/vector_huge
 
 tests/hello : tests/hello.c
-	$(CC) $(CFLAGS) -L. -lmds $<
+	$(CC) $< $(CFLAGS) -L. -lmds
 
 tests/llist : tests/llist.c
-	$(CC) $(CFLAGS) -L. -lmds $<
+	$(CC) $< $(CFLAGS) -L. -lmds
 
 tests/llist_huge : tests/llist_huge.c
-	$(CC) $(CFLAGS) -L. -lmds $<
+	$(CC) $< $(CFLAGS) -L. -lmds
 
 tests/vector : tests/vector.c
-	$(CC) $(CFLAGS) -L. -lmds $<
+	$(CC) $< $(CFLAGS) -L. -lmds
 
 tests/vector_huge : tests/vector_huge.c
-	$(CC) $(CFLAGS) -L. -lmds $<
+	$(CC) $< $(CFLAGS) -L. -lmds
 
 clean : FORCE
 	rm -f obj/*
