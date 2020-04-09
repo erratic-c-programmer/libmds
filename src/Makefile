@@ -1,7 +1,7 @@
 AR=ar
 CC=gcc
 OCC=$(CC) -c
-CFLAGS=-Wall -Wpointer-arith -fPIC -g -o $@ -lefence
+CFLAGS=-Wall -Wpointer-arith -fPIC -g -o $@
 LD_LIBRARY_PATH = 
 
 .PHONY : all
