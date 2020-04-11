@@ -22,17 +22,20 @@ void vector_del(struct vector *in)
 	free(in);
 }
 
+#define max(A, B) ((A) > (B) ? (A) : (B))
 static void vec_realloc_asneeded(struct vector *in)
 {
 	if (in->len == in->cap) {
-		void **t = realloc(in->data, (in->cap + PREALLOC) * sizeof(void*));
+		size_t realloc_sz = 2 * in->cap;
+		void **t = realloc(in->data, realloc_sz * sizeof(void*));
 		in->data = t;
-		for (int i = in->len; i < in->len + PREALLOC; i++)
+		for (int i = in->len; i < realloc_sz; i++)
 			in->data[i] = calloc(1, in->datasize);
 
-		in->cap += PREALLOC;
+		in->cap = realloc_sz;
 	}
 }
+#undef max
 
 void __vector_pushback(struct vector *in, void *data)
 {
