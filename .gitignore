@@ -4,6 +4,7 @@ src/obj/*
 
 src/vgcore*
 src/tags
+tags
 
 docs/_*/
 docs/html/
