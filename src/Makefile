@@ -12,29 +12,29 @@ static : libmds.a
 
 dynamic : libmds.so
 
-libmds.a : obj/strop.o obj/llist.o obj/vector.o
+libmds.a : dynstr/strop.o llist/llist.o vector/vector.o
 	$(AR) rcs $@ $^
 
-libmds.so : obj/strop.o obj/llist.o obj/vector.o
+libmds.so : dynstr/strop.o llist/llist.o vector/vector.o
 	$(CC) $(CFLAGS) -shared $^
 
 ###############################################################################
 
-test : libmds.so tests/hello tests/llist tests/llist_huge tests/vector tests/vector_huge
+test : tests/hello tests/llist tests/llist_huge tests/vector tests/vector_huge
 
-tests/hello : tests/hello.c
+tests/hello : tests/hello.c libmds.so
 	$(CC) $< $(CFLAGS) -L. -lmds
 
-tests/llist : tests/llist.c
+tests/llist : tests/llist.c libmds.so
 	$(CC) $< $(CFLAGS) -L. -lmds
 
-tests/llist_huge : tests/llist_huge.c
+tests/llist_huge : tests/llist_huge.c libmds.so
 	$(CC) $< $(CFLAGS) -L. -lmds
 
-tests/vector : tests/vector.c
+tests/vector : tests/vector.c libmds.so
 	$(CC) $< $(CFLAGS) -L. -lmds
 
-tests/vector_huge : tests/vector_huge.c
+tests/vector_huge : tests/vector_huge.c libmds.so
 	$(CC) $< $(CFLAGS) -L. -lmds
 
 clean : FORCE
