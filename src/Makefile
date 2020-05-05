@@ -18,15 +18,6 @@ libmds.a : obj/strop.o obj/llist.o obj/vector.o
 libmds.so : obj/strop.o obj/llist.o obj/vector.o
 	$(CC) $(CFLAGS) -shared $^
 
-obj/strop.o : dynstr/strop.c
-	$(OCC) $(CFLAGS) $^
-
-obj/llist.o : llist/llist.c
-	$(OCC) $(CFLAGS) $^
-
-obj/vector.o : vector/vector.c
-	$(OCC) $(CFLAGS) $^
-
 ###############################################################################
 
 test : libmds.so tests/hello tests/llist tests/llist_huge tests/vector tests/vector_huge
