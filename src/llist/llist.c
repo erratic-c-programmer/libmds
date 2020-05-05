@@ -27,7 +27,7 @@ void llist_del(struct llist *in)
 	free(in);
 }
 
-void llist_pushfront(struct llist *in, void *data)
+void __llist_pushfront(struct llist *in, void *data)
 {
 	struct llist_node *new_node = malloc(sizeof(struct llist_node));
 	new_node->data = calloc(1, in->datasize);
@@ -46,7 +46,7 @@ void llist_pushfront(struct llist *in, void *data)
 	in->len++;
 }
 
-void llist_pushback(struct llist *in, void *data)
+void __llist_pushback(struct llist *in, void *data)
 {
 	struct llist_node *new_node = malloc(sizeof(struct llist_node));
 	new_node->data = calloc(1, in->datasize);
@@ -65,7 +65,7 @@ void llist_pushback(struct llist *in, void *data)
 	in->len++;
 }
 
-void llist_emplace(struct llist *in, void *data, struct llist_node *pos)
+void __llist_emplace(struct llist *in, void *data, struct llist_node *pos)
 {
 	struct llist_node *new_node = malloc(sizeof(struct llist_node));
 	new_node->data = calloc(1, in->datasize);
@@ -93,7 +93,7 @@ void llist_erase(struct llist *in, struct llist_node *pos)
 void llist_swap(struct llist *in, int first, int second)
 {
 	void *t;
-	t = llist_getval(in, first);
+	t = __llist_getval(in, first);
 	llist_getnode(in, first)->data = llist_getnode(in, second)->data;
 	llist_getnode(in, second)->data = t;
 }
@@ -106,7 +106,7 @@ struct llist_node *llist_getnode(struct llist *in, int node_no)
 	return t;
 }
 
-void *llist_getval(struct llist *in, int node_no)
+void *__llist_getval(struct llist *in, int node_no)
 {
 	return llist_getnode(in, node_no)->data;
 }
