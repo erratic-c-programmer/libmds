@@ -29,6 +29,7 @@ void modll(struct llist *new)
 	llist_pushback(new, 8, int);
 	llist_pushback(new, 9, int);
 	llist_pushback(new, 10, int);
+	llist_erase(new, 0);
 	llist_pushback(new, 11, int);
 	llist_insert(new, 8, 7, int);
 	llist_swap(new, 8, 9);
