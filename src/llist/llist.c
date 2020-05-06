@@ -1,4 +1,3 @@
-/* WARNING! Contains hazardous amounts of pointer wrangling! */
 #include "llist.h"
 
 struct llist *llist_create(ssize_t datasize)
@@ -83,8 +82,11 @@ void __llist_emplace(struct llist *in, void *data, struct llist_node *pos)
 
 void llist_erase(struct llist *in, struct llist_node *pos)
 {
-	pos->prev->next = pos->next;
-	pos->next->prev = pos->prev;
+	if (pos != in->first)
+		pos->prev->next = pos->next;
+	if (pos != in->last)
+		pos->next->prev = pos->prev;
+
 	free(pos->data);
 	free(pos);
 	in->len--;
