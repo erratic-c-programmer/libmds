@@ -1,6 +1,6 @@
 src/libmds.so
 src/libmds.a
-src/obj/*
+src/*/*.o
 
 src/vgcore*
 src/tags
