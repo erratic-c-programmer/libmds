@@ -12,7 +12,6 @@ struct llist *llist_create(ssize_t datasize)
 
 void llist_del(struct llist *in)
 {
-	assert(in != NULL);
 	struct llist_node *t = in->last;
 
 	while (t->prev != NULL) {

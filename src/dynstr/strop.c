@@ -15,7 +15,6 @@ string *str_create(void)
 
 void str_append(string *str, const char *s, ssize_t bufsz)
 {
-	assert(str != NULL);
 	char *tmp = realloc(str->str, bufsz + str->len + 1);
 	str->str = tmp;
 	str->len += bufsz;
@@ -24,20 +23,17 @@ void str_append(string *str, const char *s, ssize_t bufsz)
 
 void str_del(string *str)
 {
-	assert(str != NULL);
 	free(str->str);
 	free(str);
 }
 
 void str_trunc(string *str, ssize_t nsz)
 {
-	assert(str != NULL);
 	str->str[nsz] = '\0'; /*This it a bit hacky, but it works */
 	str->len = nsz;
 }
 
 void str_flush(string *str)
 {
-	assert(str != NULL);
 	str_trunc(str, 0); /* lol why */
 }

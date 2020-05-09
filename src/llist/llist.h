@@ -9,10 +9,6 @@
 #include <string.h>
 #define INCLUDE_STRING
 #endif
-#ifndef INCLUDE_ASSERT
-#include <assert.h>
-#define INCLUDE_ASSERT
-#endif
 #define INCLUDE_LLIST
 
 struct llist *llist_create(ssize_t datasize);
