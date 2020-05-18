@@ -1,18 +1,13 @@
-src/libmds.so
-src/libmds.a
-src/*/*.o
+libmds.so
+libmds.a
+*/*.o
 
-src/vgcore*
-src/tags
+vgcore*
 tags
 
-docs/_*/
-docs/html/
-docs/xml/
-
-src/tests/hello
-src/tests/jumble
-src/tests/llist
-src/tests/llist_huge
-src/tests/vector
-src/tests/vector_huge
+tests/hello
+tests/jumble
+tests/llist
+tests/llist_huge
+tests/vector
+tests/vector_huge
