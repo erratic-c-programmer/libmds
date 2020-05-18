@@ -1,8 +1,10 @@
+#include <stdlib.h>
+#include <string.h>
+#include <errno.h>
+#include "../util.h"
 #ifndef INCLUDE_TYPES
 #include "../types.h"
 #endif
-#include <stdlib.h>
-#include <string.h>
 #define INCLUDE_LLIST
 
 struct llist *llist_create(ssize_t datasize);

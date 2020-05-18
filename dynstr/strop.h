@@ -3,11 +3,13 @@
  * @brief Functions to create, delete, append to, etc. a dynamic string
  */
 
+#include <stdlib.h>
+#include <string.h>
+#include <errno.h>
+#include "../util.h"
 #ifndef INCLUDE_TYPES
 #include "../types.h"
 #endif
-#include <stdlib.h>
-#include <string.h>
 #define INCLUDE_STROP
 
 /*!

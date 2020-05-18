@@ -1,8 +1,9 @@
+#include <stdlib.h>
+#include <string.h>
+#include "../util.h"
 #ifndef INCLUDE_TYPES
 #include "../types.h"
 #endif
-#include <stdlib.h>
-#include <string.h>
 #define INCLUDE_VECTOR
 
 #define PREALLOC 4
