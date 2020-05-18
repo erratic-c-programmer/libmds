@@ -68,7 +68,7 @@ void vector_erase(struct vector *in, int pos)
 {
 	if (!in->len)
 		return;
-	
+
 	for (int i = pos; i < in->len; i++)
 		memcpy(in->data[i], in->data[i + 1], in->datasize);
 
@@ -77,7 +77,7 @@ void vector_erase(struct vector *in, int pos)
 
 void vector_shrinkfit(struct vector *in)
 {
-	if (!in->cap)
+	if (in->cap == 0)
 		return;
 
 	while (in->cap != in->len) {
