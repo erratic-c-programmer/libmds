@@ -14,19 +14,10 @@ Library for misc. data structures
 ### Prerequisites:
 - gcc/clang
 - GNU make
-- sphinx\*
-- sphinx_rtd_theme/sphinx-rtd-theme\*
-- doxygen\*
 
-\* Required for documentation
-
-To build static and dynamic libraries with documentation:
+To build static and dynamic libraries with tests:
 ```linux
 $ make
-```
-To build without documentation:
-```linux
-$ (cd src/; make)
 ```
 
 # Warranty (or lack of it)
