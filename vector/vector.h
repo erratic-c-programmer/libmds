@@ -10,9 +10,9 @@
 
 struct vector *vector_create(ssize_t datasize);
 void vector_del(struct vector *in);
-void __vector_pushback(struct vector *in, void *data);
-void __vector_pushfront(struct vector *in, void *data);
-void __vector_insert(struct vector *in, void *data, int pos);
+void *__vector_pushback(struct vector *in, void *data);
+void *__vector_pushfront(struct vector *in, void *data);
+void *__vector_insert(struct vector *in, void *data, int pos);
 void vector_erase(struct vector *in, int pos);
 void vector_shrinkfit(struct vector *in);
 

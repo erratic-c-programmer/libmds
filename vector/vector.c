@@ -26,6 +26,7 @@ void vector_del(struct vector *in)
 	}
 	free(in->data);
 	free(in);
+	return;
 }
 
 #define max(A, B) ((A) > (B) ? (A) : (B))
@@ -41,37 +42,40 @@ static void vec_realloc_asneeded(struct vector *in)
 
 		in->cap = realloc_sz;
 	}
+	return;
 }
 #undef max
 
-void __vector_pushback(struct vector *in, void *data)
+void *__vector_pushback(struct vector *in, void *data)
 {
-	CHECKNULL(in);
+	CHECKNULL(in) NULL;
 	vec_realloc_asneeded(in);
 	memcpy(in->data[in->len], data, in->datasize);
-	in->len++;
+	return in->data[in->len++];
 }
 
-void __vector_pushfront(struct vector *in, void *data)
+void* __vector_pushfront(struct vector *in, void *data)
 {
-	CHECKNULL(in);
+	CHECKNULL(in) NULL;
 	vec_realloc_asneeded(in);
 	for (int i = in->len; i > 0; i--)
 		memcpy(in->data[i], in->data[i - 1], in->datasize);
 	memcpy(in->data[0], data, in->datasize);
-	in->len++;
+	in->len += 1;
+	return in->data[0];
 }
 
-void __vector_insert(struct vector *in, void *data, int pos)
+void *__vector_insert(struct vector *in, void *data, int pos)
 {
-	CHECKNULL(in);
+	CHECKNULL(in) NULL;
 	vec_realloc_asneeded(in);
 
 	for (int i = in->len; i > pos; i--)
 		memcpy(in->data[i], in->data[i - 1], in->datasize);
 
 	memcpy(in->data[pos], data, in->datasize);
-	in->len++;
+	in->len += 1;
+	return in->data[pos];
 }
 
 void vector_erase(struct vector *in, int pos)
@@ -84,6 +88,7 @@ void vector_erase(struct vector *in, int pos)
 		memcpy(in->data[i], in->data[i + 1], in->datasize);
 
 	in->len--;
+	return;
 }
 
 void vector_shrinkfit(struct vector *in)
@@ -98,4 +103,5 @@ void vector_shrinkfit(struct vector *in)
 	}
 	void **t = realloc(in->data, in->len * sizeof(void*));
 	in->data = t;
+	return;
 }
