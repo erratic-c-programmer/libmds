@@ -3,10 +3,9 @@ CC=gcc
 OCC=$(CC) -c
 CFLAGS=-Wall -Wpointer-arith -fPIC -g -o $@
 
-.PHONY : all
+.PHONY : all static dynamic
 
 all : static dynamic test
-	@echo "\033[0;31mRun this:  export LD_LIBRARY_PATH=\$${LD_LIBRARY_PATH}:$$(pwd)\033[0m"
 
 static : libmds.a
 
@@ -22,20 +21,20 @@ libmds.so : dynstr/strop.o llist/llist.o vector/vector.o
 
 test : tests/hello tests/llist tests/llist_huge tests/vector tests/vector_huge
 
-tests/hello : tests/hello.c libmds.so
-	$(CC) $< $(CFLAGS) -L. -lmds
+tests/hello : tests/hello.c libmds.a
+	$(CC) $(CFLAGS) $^
 
-tests/llist : tests/llist.c libmds.so
-	$(CC) $< $(CFLAGS) -L. -lmds
+tests/llist : tests/llist.c libmds.a
+	$(CC) $(CFLAGS) $^
 
-tests/llist_huge : tests/llist_huge.c libmds.so
-	$(CC) $< $(CFLAGS) -L. -lmds
+tests/llist_huge : tests/llist_huge.c libmds.a
+	$(CC) $(CFLAGS) $^
 
-tests/vector : tests/vector.c libmds.so
-	$(CC) $< $(CFLAGS) -L. -lmds
+tests/vector : tests/vector.c libmds.a
+	$(CC) $(CFLAGS) $^
 
-tests/vector_huge : tests/vector_huge.c libmds.so
-	$(CC) $< $(CFLAGS) -L. -lmds
+tests/vector_huge : tests/vector_huge.c libmds.a
+	$(CC) $(CFLAGS) $^
 
 clean : FORCE
 	rm -f */*.o
