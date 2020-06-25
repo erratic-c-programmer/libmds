@@ -72,7 +72,7 @@ void __llist_pushback(struct llist *in, void *data)
 	in->len++;
 }
 
-void __llist_emplace(struct llist *in, void *data, struct llist_node *pos)
+void __llist_insert(struct llist *in, void *data, struct llist_node *pos)
 {
 	CHECKNULL(in);
 	struct llist_node *new_node = malloc(sizeof(struct llist_node));
@@ -101,6 +101,18 @@ void llist_erase(struct llist *in, struct llist_node *pos)
 	free(pos->data);
 	free(pos);
 	in->len--;
+}
+
+void llist_popfront(struct llist *in)
+{
+	llist_erase(in, llist_getnode(in, 0));
+	return;
+}
+
+void llist_popback(struct llist *in)
+{
+	llist_erase(in, llist_getnode(in, in->len - 1));
+	return;
 }
 
 void llist_swap(struct llist *in, int first, int second)
