@@ -1,9 +1,11 @@
-AR=ar
+WARNINGS = -W -Wall -Wextra -Wpedantic -pedantic -Wpointer-arith
+DEBUG = -g
+OPTIM = -O3
+CFLAGS= $(WARNINGS) $(DEBUG) $(OPTIM) -fPIC -o $@
 CC=gcc
 OCC=$(CC) -c
-CFLAGS=-Wall -Wpointer-arith -fPIC -g -o $@
-
-.PHONY : all static dynamic
+AR=ar
+.PHONY : all static dynamic test
 
 all : static dynamic test
 
@@ -16,6 +18,9 @@ libmds.a : dynstr/strop.o llist/llist.o vector/vector.o
 
 libmds.so : dynstr/strop.o llist/llist.o vector/vector.o
 	$(CC) $(CFLAGS) -shared $^
+
+%.o : %.c %.h
+	$(OCC) $(CFLAGS) $<
 
 ###############################################################################
 
