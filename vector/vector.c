@@ -36,7 +36,7 @@ static void vec_realloc_asneeded(struct vector *in)
 		size_t realloc_sz = 2 * in->cap;
 		void **t = realloc(in->data, realloc_sz * sizeof(void*));
 		in->data = t;
-		for (int i = in->len; i < realloc_sz; i++)
+		for (unsigned long int i = in->len; i < realloc_sz; i++)
 			in->data[i] = calloc(1, in->datasize);
 
 		in->cap = realloc_sz;
