@@ -29,7 +29,6 @@ void vector_del(struct vector *in)
 	return;
 }
 
-#define max(A, B) ((A) > (B) ? (A) : (B))
 static void vec_realloc_asneeded(struct vector *in)
 {
 	CHECKNULL(in);
@@ -44,7 +43,6 @@ static void vec_realloc_asneeded(struct vector *in)
 	}
 	return;
 }
-#undef max
 
 void *__vector_pushback(struct vector *in, void *data)
 {
