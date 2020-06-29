@@ -1,6 +1,5 @@
 #include <stdlib.h>
 #include <string.h>
-#include "../util.h"
 #ifndef INCLUDE_TYPES
 #include "../types.h"
 #endif

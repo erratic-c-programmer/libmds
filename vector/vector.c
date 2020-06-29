@@ -3,7 +3,6 @@
 struct vector *vector_create(ssize_t datasize)
 {
 	struct vector *retval = malloc(sizeof(struct vector));
-	CHECKNULL(retval) NULL;
 	/* ...And it's up to the program to check errno for
 	 * ENOMEM.
 	 */
@@ -20,7 +19,6 @@ struct vector *vector_create(ssize_t datasize)
 
 void vector_del(struct vector *in)
 {
-	CHECKNULL(in);
 	for (int i = 0; i < in->cap; i++) {
 		free(in->data[i]);
 	}
@@ -31,7 +29,6 @@ void vector_del(struct vector *in)
 
 static void vec_realloc_asneeded(struct vector *in)
 {
-	CHECKNULL(in);
 	if (in->len == in->cap) {
 		size_t realloc_sz = 2 * in->cap;
 		void **t = realloc(in->data, realloc_sz * sizeof(void*));
@@ -46,7 +43,6 @@ static void vec_realloc_asneeded(struct vector *in)
 
 void *__vector_pushback(struct vector *in, void *data)
 {
-	CHECKNULL(in) NULL;
 	vec_realloc_asneeded(in);
 	memcpy(in->data[in->len], data, in->datasize);
 	return in->data[in->len++];
@@ -54,7 +50,6 @@ void *__vector_pushback(struct vector *in, void *data)
 
 void* __vector_pushfront(struct vector *in, void *data)
 {
-	CHECKNULL(in) NULL;
 	vec_realloc_asneeded(in);
 	for (int i = in->len; i > 0; i--)
 		memcpy(in->data[i], in->data[i - 1], in->datasize);
@@ -65,7 +60,6 @@ void* __vector_pushfront(struct vector *in, void *data)
 
 void *__vector_insert(struct vector *in, void *data, int pos)
 {
-	CHECKNULL(in) NULL;
 	vec_realloc_asneeded(in);
 
 	for (int i = in->len; i > pos; i--)
@@ -78,7 +72,6 @@ void *__vector_insert(struct vector *in, void *data, int pos)
 
 void vector_erase(struct vector *in, int pos)
 {
-	CHECKNULL(in);
 	if (!in->len)
 		return;
 
@@ -91,7 +84,6 @@ void vector_erase(struct vector *in, int pos)
 
 void vector_shrinkfit(struct vector *in)
 {
-	CHECKNULL(in);
 	if (in->cap == 0)
 		return;
 

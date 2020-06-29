@@ -3,7 +3,6 @@
 struct llist *llist_create(ssize_t datasize)
 {
 	struct llist *retval = malloc(sizeof(struct llist));
-	CHECKNULL(retval) NULL;
 	/* ...And it's up to the program to check errno for
 	 * ENOMEM.
 	 */
@@ -18,7 +17,6 @@ struct llist *llist_create(ssize_t datasize)
 
 void llist_del(struct llist *in)
 {
-	CHECKNULL(in);
 	struct llist_node *t = in->last;
 
 	while (t->prev != NULL) {
@@ -34,7 +32,6 @@ void llist_del(struct llist *in)
 
 void __llist_pushfront(struct llist *in, void *data)
 {
-	CHECKNULL(in);
 	struct llist_node *new_node = malloc(sizeof(struct llist_node));
 	new_node->data = calloc(1, in->datasize);
 	memcpy(new_node->data, data, in->datasize);
@@ -54,7 +51,6 @@ void __llist_pushfront(struct llist *in, void *data)
 
 void __llist_pushback(struct llist *in, void *data)
 {
-	CHECKNULL(in);
 	struct llist_node *new_node = malloc(sizeof(struct llist_node));
 	new_node->data = calloc(1, in->datasize);
 	memcpy(new_node->data, data, in->datasize);
@@ -74,7 +70,6 @@ void __llist_pushback(struct llist *in, void *data)
 
 void __llist_insert(struct llist *in, void *data, struct llist_node *pos)
 {
-	CHECKNULL(in);
 	struct llist_node *new_node = malloc(sizeof(struct llist_node));
 	new_node->data = calloc(1, in->datasize);
 	memcpy(new_node->data, data, in->datasize);
@@ -91,8 +86,6 @@ void __llist_insert(struct llist *in, void *data, struct llist_node *pos)
 
 void llist_erase(struct llist *in, struct llist_node *pos)
 {
-	CHECKNULL(in);
-	CHECKNULL(pos);
 	if (pos != in->first)
 		pos->prev->next = pos->next;
 	if (pos != in->last)
@@ -117,7 +110,6 @@ void llist_popback(struct llist *in)
 
 void llist_swap(struct llist *in, int first, int second)
 {
-	CHECKNULL(in);
 	void *t;
 	t = __llist_getval(in, first);
 	llist_getnode(in, first)->data = llist_getnode(in, second)->data;
@@ -126,7 +118,6 @@ void llist_swap(struct llist *in, int first, int second)
 
 struct llist_node *llist_getnode(struct llist *in, int node_no)
 {
-	CHECKNULL(in) NULL;
 	struct llist_node *t = in->first;
 	for (int i = 0; i < node_no; i++)
 		t = t->next;
@@ -135,10 +126,5 @@ struct llist_node *llist_getnode(struct llist *in, int node_no)
 
 void *__llist_getval(struct llist *in, int node_no)
 {
-	if (in == NULL) {
-		errno = EFAULT; /* Up to the program to check this! */
-		return NULL;
-	}
-
 	return llist_getnode(in, node_no)->data;
 }
