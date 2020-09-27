@@ -1,4 +1,29 @@
-WARNINGS = -W -Wall -Wextra -Wpedantic -pedantic -Wpointer-arith
+WARNINGS += -Wpedantic
+WARNINGS += -Wall
+WARNINGS += -Wextra
+WARNINGS += -Waggregate-return
+WARNINGS += -Wbad-function-cast
+WARNINGS += -Wcast-align
+WARNINGS += -Wcast-qual
+WARNINGS += -Wdeclaration-after-statement
+WARNINGS += -Wfloat-equal
+WARNINGS += -Wformat=2
+WARNINGS += -Wmissing-declarations
+WARNINGS += -Wmissing-include-dirs
+WARNINGS += -Wmissing-prototypes
+WARNINGS += -Wnested-externs
+WARNINGS += -Wpointer-arith
+WARNINGS += -Wredundant-decls
+WARNINGS += -Wsequence-point
+WARNINGS += -Wshadow
+WARNINGS += -Wstrict-prototypes
+WARNINGS += -Wswitch
+WARNINGS += -Wundef
+WARNINGS += -Wunreachable-code
+WARNINGS += -Wunused-parameter
+WARNINGS += -Wwrite-strings
+WARNINGS += -Werror
+
 DEBUG = -g
 OPTIM = -O3 -march=native -mtune=native
 CFLAGS= $(WARNINGS) $(DEBUG) $(OPTIM) -std=c99 -fPIC -o $@
