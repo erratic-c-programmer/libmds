@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 WARNINGS += -Wpedantic
 WARNINGS += -Wall
 WARNINGS += -Wextra
