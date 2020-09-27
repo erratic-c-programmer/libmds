@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 WARNINGS += -Wpedantic
 WARNINGS += -Wall
 WARNINGS += -Wextra
@@ -30,6 +31,8 @@ CFLAGS= $(WARNINGS) $(DEBUG) $(OPTIM) -std=c99 -fPIC -o $@
 CC=gcc
 OCC=$(CC) -c
 AR=ar
+V=@
+
 .PHONY : all static dynamic test
 
 all : static dynamic test
@@ -39,32 +42,41 @@ static : libmds.a
 dynamic : libmds.so
 
 libmds.a : dynstr/strop.o llist/llist.o vector/vector.o
-	$(AR) rcs $@ $^
+	$V printf "Creating static library \033[1m$@\033[0m...\n"
+	$V $(AR) rcs $@ $^
+
 
 libmds.so : dynstr/strop.o llist/llist.o vector/vector.o
-	$(CC) $(CFLAGS) -shared $^
+	$V printf "Creating shared library \033[1m$@\033[0m...\n"
+	$V $(CC) $(CFLAGS) -shared $^
 
-%.o : %.c %.h
-	$(OCC) $(CFLAGS) $<
+%.o : %.c
+	$V $(OCC) $(CFLAGS) $^
+	$V printf "Compiling \033[1m$@\033[0m from $^...\n"
 
 ###############################################################################
 
 test : tests/hello tests/llist tests/llist_huge tests/vector tests/vector_huge
 
 tests/hello : tests/hello.c libmds.a
-	$(CC) $(CFLAGS) $^
+	$V $(CC) $(CFLAGS) $^
+	$V printf "Compiling and linking \033[1m$@\033[0m...\n"
 
 tests/llist : tests/llist.c libmds.a
-	$(CC) $(CFLAGS) $^
+	$V $(CC) $(CFLAGS) $^
+	$V printf "Compiling and linking \033[1m$@\033[0m...\n"
 
 tests/llist_huge : tests/llist_huge.c libmds.a
-	$(CC) $(CFLAGS) $^
+	$V $(CC) $(CFLAGS) $^
+	$V printf "Compiling and linking \033[1m$@\033[0m...\n"
 
 tests/vector : tests/vector.c libmds.a
-	$(CC) $(CFLAGS) $^
+	$V $(CC) $(CFLAGS) $^
+	$V printf "Compiling and linking \033[1m$@\033[0m...\n"
 
 tests/vector_huge : tests/vector_huge.c libmds.a
-	$(CC) $(CFLAGS) $^
+	$V $(CC) $(CFLAGS) $^
+	$V printf "Compiling and linking \033[1m$@\033[0m...\n"
 
 clean : FORCE
 	rm -f */*.o
