@@ -84,6 +84,8 @@ void vector_erase(struct vector *in, int pos)
 
 void vector_shrinkfit(struct vector *in)
 {
+	void **t;
+
 	if (in->cap == 0)
 		return;
 
@@ -91,7 +93,7 @@ void vector_shrinkfit(struct vector *in)
 		free(in->data[in->cap - 1]);
 		in->cap--;
 	}
-	void **t = realloc(in->data, in->len * sizeof(void*));
+	t = realloc(in->data, in->len * sizeof(void*));
 	in->data = t;
 	return;
 }
